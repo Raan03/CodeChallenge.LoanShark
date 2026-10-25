@@ -85,6 +85,6 @@
 
     private void HandleSubmit()
     {
-        loanModel.Payment = LoanUtilities.CalcPayment(loanModel.PurchaseAmount, loanModel.Rate, loanModel.Term);
+        loanModel = LoanUtilities.GetPayments(loanModel);
     }
 }
