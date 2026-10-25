@@ -11,7 +11,7 @@
         express as the annual percentage rate, or APR. Enter the loan amount, term and interest rate in the fields below and
         click calculate to see your personalizedresults.
     </p>
-    <div class="row ">
+    <div class="row">
         <div class="col-12 col-md-6">
             <EditForm EditContext="editContext" OnValidSubmit="HandleSubmit">
                 <DataAnnotationsValidator />
@@ -65,15 +65,22 @@
                 </div>
             </div>
             <div class="text-end mt-2">
-                <button class="btn btn-primary">Show schedule</button>
+                <button class="btn btn-primary" @onclick="ToggleSchedule">@buttonText</button>
             </div>
         </div>
-
+        @if (showSchedule)
+        {
+            <div class="col-12">
+                <PaymentSchedule Payments="loanModel.Payments" />
+            </div>
+        }
     </div>
 </div>
 @code {
     private LoanModel loanModel = new LoanModel();
     private EditContext? editContext;
+    private bool showSchedule = false;
+    private string buttonText = "Show Schedule";
 
     override protected void OnInitialized()
     {
@@ -86,5 +93,19 @@
     private void HandleSubmit()
     {
         loanModel = LoanUtilities.GetPayments(loanModel);
+    }
+
+    private void ToggleSchedule()
+    {
+        if (showSchedule)
+        {
+            showSchedule = false;
+            buttonText = "Show Schedule";
+        }
+        else
+        {
+            showSchedule = true;
+            buttonText = "Hide Schedule";
+        }
     }
 }
