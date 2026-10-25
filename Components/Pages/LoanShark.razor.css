@@ -1,0 +1,27 @@
+/* CSS for LoanShark component */
+.loanForm {
+    background-color: var(--bs-tertiary-bg);
+    border: solid 1px var(--bs-secondary-bg);
+}
+
+.loanForm input {
+    width: 100%;
+    padding: .5rem;
+}
+
+.paymentTitle{
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.payment {
+    text-align: center;
+    font-weight: bold;
+    color: #2B404F;
+    font-family: 'Inconsolata', sans-serif
+}
+
+.totalCost{
+    font-weight: bold;
+}
